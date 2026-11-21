@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. All colors are defined once here and exposed to Tailwind
+ * through @theme, so components use semantic utilities such as
+ * bg-surface, text-muted-foreground, border-border and text-accent.
+ */
+:root {
+  color-scheme: dark;
+
+  --background: #0c0d0e;
+  --surface: #131517;
+  --surface-raised: #191c1f;
+  --border: #24282c;
+  --border-strong: #343a3f;
+  --foreground: #e7e9e8;
+  --muted-foreground: #9aa29f;
+  --accent: #4fb28a;
+  --accent-strong: #6cc7a2;
+  --accent-subtle: rgb(79 178 138 / 0.1);
+  --accent-foreground: #07110d;
+  --ring: #6cc7a2;
+
+  --radius: 0.5rem;
+  --header-height: 4rem;
+  --content-width: 72rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --radius-sm: calc(var(--radius) - 0.25rem);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 0.25rem);
+
+  --spacing-header: var(--header-height);
+  --container-content: var(--content-width);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-padding-top: calc(var(--header-height) + 1.5rem);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}

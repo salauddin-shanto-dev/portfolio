@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://salauddin-shanto-dev.github.io
+Sitemap: https://salauddin-shanto-dev.github.io/sitemap.xml
